@@ -1,7 +1,5 @@
 # vite-plugin-ftp
-a simple useful vite ftp plugin
-
-based on [ftp-deploy](https://github.com/simonh1000/ftp-deploy)
+a simple useful vite ftp plugin, based on [ftp-deploy](https://github.com/simonh1000/ftp-deploy), upload your dist file after vite build.
 
 # install
 ```

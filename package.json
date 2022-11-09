@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-ftp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a simple useful vite ftp plugin",
   "main": "index.js",
   "scripts": {
