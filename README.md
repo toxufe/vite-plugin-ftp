@@ -3,6 +3,11 @@ a simple useful vite ftp plugin
 
 based on [ftp-deploy](https://github.com/simonh1000/ftp-deploy)
 
+# install
+```
+> npm i vite-plugin-ftp
+```
+
 # usage
 
 ```js
