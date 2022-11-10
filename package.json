@@ -1,10 +1,15 @@
 {
   "name": "vite-plugin-ftp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a simple useful vite ftp plugin",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist/ && tsup src/main.ts --dts --no-splitting"
+  },
+  "homepage": "https://github.com/JianGuoPaPa/vite-plugin-ftp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JianGuoPaPa/vite-plugin-ftp"
   },
   "keywords": [
     "vite",
