@@ -1,21 +1,11 @@
-import { ResolvedConfig, normalizePath } from 'vite';
+import { Plugin, ResolvedConfig, normalizePath } from 'vite';
 import path from 'path';
+import type { ftpOptions } from './types';
 import ftpDeploy from 'ftp-deploy';
 
-interface Options {
-    localRoot?: string; // local dist output
-    host: string;
-    port: number;
-    user: string;
-    password?: string;
-    include?: string[]; // file includes
-    remoteDir?: string; // target server path
-    waitingTime: number; // time waiting for success connection
-}
-
-export default function vitePluginFtp(userConfig) {
+export function vitePluginFtp(userConfig: ftpOptions = {}): Plugin {
     let outDir = 'dist';
-    const options: Options = {
+    const options: ftpOptions = {
         host: '',
         port: 21,
         remoteDir: '',
@@ -25,14 +15,12 @@ export default function vitePluginFtp(userConfig) {
         waitingTime: 2000
     };
     Object.assign(options, userConfig);
-    console.log(options);
-    if (Object.keys(options).some(key => !options[key])) {
+    if (Object.keys(options).some(key => !(options as any)[key])) {
         console.log('Error: invalid config, please check carefully');
         process.exit(1);
-        return;
     }
     return {
-        name: 'ftp-upload',
+        name: 'vite-plugin-ftp',
         apply: 'build',
         enforce: 'post',
         configResolved(config: ResolvedConfig) {
@@ -45,7 +33,7 @@ export default function vitePluginFtp(userConfig) {
             const ftp = new ftpDeploy();
             try {
                 options.localRoot = path.resolve(normalizePath(outDir));
-                ftp.on('uploading', function (data) {
+                ftp.on('uploading', function (data: any) {
                     const { totalFilesCount, transferredFileCount, filename } = data;
                     spinner.start(
                         `uploading ${transferredFileCount}/${totalFilesCount} ${filename}`
@@ -69,7 +57,7 @@ export default function vitePluginFtp(userConfig) {
                         include: options.include
                     })
                     .then(() => spinner.succeed(`upload complete`))
-                    .catch(err => {
+                    .catch((err: any) => {
                         console.log(err);
                         spinner.info('upload fail');
                         // all error should interrupt process initiativly, let jenkins like software confirm failure

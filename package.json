@@ -1,11 +1,15 @@
 {
   "name": "vite-plugin-ftp",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "a simple useful vite ftp plugin",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist/ && tsup src/main.ts --dts --no-splitting"
+    "build": "tsup"
   },
+  "type": "module",
+  "files": [
+    "src"
+  ],
   "homepage": "https://github.com/JianGuoPaPa/vite-plugin-ftp",
   "repository": {
     "type": "git",
@@ -18,16 +22,31 @@
     "ftp",
     "deploy"
   ],
-  "author": "jianguopapa",
+  "author": "jianguopapa (https://github.com/jianguopapa)",
   "license": "ISC",
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "sourcemap": false,
+    "dts": true,
+    "splitting": false,
+    "clean": true,
+    "format": [
+      "esm",
+      "cjs"
+    ]
+  },
   "dependencies": {
     "chalk": "^5.1.2",
     "ftp-deploy": "^2.4.3",
     "ora": "^6.1.2",
     "typescript": "^4.8.4",
-    "vite": "^3.2.3"
+    "vite": "^2.5.10"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9"
+    "vue": "^3.2.4",
+    "@types/node": "^18.11.9",
+    "tsup": "^6.3.0"
   }
 }
