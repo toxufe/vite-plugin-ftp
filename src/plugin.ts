@@ -24,7 +24,7 @@ export function vitePluginFtp(userConfig: ftpOptions = {}): Plugin {
         waitingTime: 2000
     };
     Object.assign(options, userConfig);
-    if (Object.keys(options).some(key => !(options as any)[key])) {
+    if (Object.keys(options).some(key => (options as any)[key] === undefined)) {
         console.log('Error: invalid config, please check carefully');
         process.exit(1);
     }
