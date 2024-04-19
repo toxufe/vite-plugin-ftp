@@ -8,7 +8,6 @@ export function vitePluginFtp(userConfig: ftpOptions = {}): Plugin {
     const options: ftpOptions = {
         host: '',
         port: 21,
-        localRoot: outDir,
         remoteDir: '',
         user: 'root',
         password: '',
