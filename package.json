@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-ftp-new",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a simple useful vite ftp plugin,update server",
   "main": "dist/index.js",
   "scripts": {
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "chalk": "^5.1.2",
-    "ftp-deploy": "^2.4.3",
+    "ftp-deploy": "^2.4.7",
     "ora": "^6.1.2",
     "typescript": "^4.8.4",
     "vite": "^2.5.10"
