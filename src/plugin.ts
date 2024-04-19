@@ -8,10 +8,20 @@ export function vitePluginFtp(userConfig: ftpOptions = {}): Plugin {
     const options: ftpOptions = {
         host: '',
         port: 21,
+        localRoot: outDir,
         remoteDir: '',
         user: 'root',
         password: '',
         include: ['*', '**/*'],
+        exclude: [
+            "dist/**/*.map",
+            "node_modules/**",
+            "node_modules/**/.*",
+            ".git/**",
+        ],
+        deleteRemote: false,
+        forcePasv: true,
+        sftp: false,
         waitingTime: 2000
     };
     Object.assign(options, userConfig);
@@ -54,7 +64,11 @@ export function vitePluginFtp(userConfig: ftpOptions = {}): Plugin {
                         password: options.password,
                         localRoot: options.localRoot,
                         remoteRoot: options.remoteDir,
-                        include: options.include
+                        include: options.include,
+                        exclude: options.exclude,
+                        deleteRemote: options.deleteRemote,
+                        forcePasv: options.forcePasv,
+                        sftp: options.sftp
                     })
                     .then(() => spinner.succeed(`upload complete`))
                     .catch((err: any) => {

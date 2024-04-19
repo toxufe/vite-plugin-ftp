@@ -11,6 +11,7 @@ export interface ftpOptions {
      * ftp target host service port
      */
     port?: number;
+
     /**
      * ftp username
      */
@@ -24,6 +25,10 @@ export interface ftpOptions {
      */
     include?: string[];
     /**
+     * upload file exclude
+     */
+    exclude?: string[];
+    /**
      * ftp target dir
      */
     remoteDir?: string;
@@ -31,4 +36,16 @@ export interface ftpOptions {
      * time waiting for success connection
      */
     waitingTime?: number;
+    /**
+     * delete remote file
+     */
+    deleteRemote?: boolean;
+    /**
+     * ftp passive mode
+     */
+    forcePasv?: boolean;
+    /**
+     * / use sftp or ftp
+     */
+    sftp?: boolean;
 }
