@@ -22,7 +22,7 @@
     "ftp",
     "deploy"
   ],
-  "author": "jianguopapa (https://github.com/jianguopapa)",
+  "author": "flytong",
   "license": "ISC",
   "tsup": {
     "entry": [
